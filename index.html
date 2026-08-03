@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>📜 Мемний історик + картинки</title>
+    <title>📜 Мемний історик + Groq</title>
     <style>
         * {
             margin: 0;
@@ -170,13 +170,6 @@
             margin-bottom: 10px;
         }
 
-        .image-loader {
-            text-align: center;
-            padding: 12px 0;
-            color: #6a8a9a;
-            font-size: 14px;
-        }
-
         .image-error {
             background: #2a1a1a;
             border: 1px solid #6a3a3a;
@@ -186,6 +179,15 @@
             color: #d08a8a;
             font-size: 14px;
             margin: 12px 0;
+            display: none;
+        }
+
+        .error-box {
+            background: #2a1a1a;
+            border: 1px solid #8b3a3a;
+            border-radius: 16px;
+            padding: 16px;
+            color: #e6a0a0;
         }
     </style>
 </head>
@@ -194,7 +196,7 @@
 <div class="card">
     <h1>📜 Мемний історик</h1>
     <div class="subtitle">
-        🖼️ ШІ генерує картинку до кожного мема (безкоштовно)
+        ⚡ Groq + картинки (безкоштовно)
     </div>
 
     <div class="input-group">
@@ -236,12 +238,12 @@
     };
 
     // ================================================================
-    // 2. ВАШ КЛЮЧ OPENROUTER
+    // 2. ВАШ КЛЮЧ GROQ
     // ================================================================
-    const OPENROUTER_KEY = "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";
-    const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
+    const GROQ_KEY = "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";
+    const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
-    async function askOpenRouter(dateStr) {
+    async function askGroq(dateStr) {
         const prompt = `
 Ти — Мемний історик. Напиши коротку цікаву історію (до 3 речень) про те, який мем або інтернет-тренд був популярним саме ${dateStr}.
 Якщо не знаєш точно — вигадай реалістичний жарт у стилі «забуті меми».
@@ -250,16 +252,14 @@
 `;
 
         try {
-            const response = await fetch(OPENROUTER_URL, {
+            const response = await fetch(GROQ_URL, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${OPENROUTER_KEY}`,
-                    "HTTP-Referer": window.location.href,
-                    "X-Title": "Мемний історик"
+                    "Authorization": `Bearer ${GROQ_KEY}`
                 },
                 body: JSON.stringify({
-                    model: "openrouter/free",
+                    model: "mixtral-8x7b-32768",
                     messages: [
                         { role: "system", content: "Ти експерт з інтернет-мемів та історії трендів." },
                         { role: "user", content: prompt }
@@ -270,12 +270,12 @@
             });
 
             const data = await response.json();
-            console.log("OpenRouter відповідь:", data);
+            console.log("Groq відповідь:", data);
 
             const text = data?.choices?.[0]?.message?.content || "❌ Не вдалося згенерувати мем.";
             return text;
         } catch (error) {
-            console.error("Помилка OpenRouter:", error);
+            console.error("Помилка Groq:", error);
             return "⚠️ ШІ тимчасово недоступний. Спробуй іншу дату.";
         }
     }
@@ -284,19 +284,14 @@
     // 3. ГЕНЕРАЦІЯ КАРТИНКИ (безкоштовний Pollinations.ai)
     // ================================================================
     function generateImage(prompt) {
-        // Очищуємо промпт від емодзі та зайвих символів
         const cleanPrompt = prompt
-            .replace(/[^\w\s,.!?\-()]/g, ' ') // прибираємо емодзі
+            .replace(/[^\w\s,.!?\-()]/g, ' ')
             .replace(/\s+/g, ' ')
             .trim()
-            .slice(0, 200); // обмежуємо довжину
+            .slice(0, 200);
 
-        // Pollinations.ai — безкоштовний API без ключа
-        // Додаємо стиль "мем" для кращого результату
         const imagePrompt = `meme style, internet meme, ${cleanPrompt}, viral meme, funny`;
         const encodedPrompt = encodeURIComponent(imagePrompt);
-        
-        // Використовуємо Pollinations з параметрами
         return `https://image.pollinations.ai/prompt/${encodedPrompt}?width=768&height=512&nologo=true&seed=${Date.now()}`;
     }
 
@@ -315,22 +310,19 @@
             </div>
             <img class="mem-image" src="${imageUrl}" alt="${meme.title}" 
                  onerror="this.style.display='none'; this.parentElement.querySelector('.image-error').style.display='block';" />
-            <div class="image-error" style="display:none;">
+            <div class="image-error">
                 ⚠️ Не вдалося завантажити картинку. Спробуйте оновити сторінку.
             </div>
         `;
     }
 
-    function renderAI(text, date) {
-        // Генеруємо картинку на основі тексту від ШІ
-        const imageUrl = generateImage(text);
-
+    function renderAI(text, imageUrl) {
         return `
-            <div class="ai-badge">🤖 Згенеровано OpenRouter (безкоштовно)</div>
+            <div class="ai-badge">⚡ Згенеровано Groq (безкоштовно)</div>
             <div style="font-size:16px; line-height:1.6; color:#b6c4d0; margin-bottom:12px;">${text}</div>
             <img class="mem-image" src="${imageUrl}" alt="Мем" 
                  onerror="this.style.display='none'; this.parentElement.querySelector('.image-error').style.display='block';" />
-            <div class="image-error" style="display:none;">
+            <div class="image-error">
                 ⚠️ Не вдалося завантажити картинку. Спробуйте оновити сторінку.
             </div>
         `;
@@ -349,15 +341,15 @@
         // 1) Шукаємо в базі
         const meme = memeDB[dateVal];
         if (meme) {
-            // Генеруємо картинку на основі назви мема
             const imageUrl = generateImage(meme.title + " " + meme.desc);
             resultDiv.innerHTML = renderMeme(meme, dateVal, imageUrl);
             return;
         }
 
-        // 2) Якщо немає — запитуємо OpenRouter
-        const aiText = await askOpenRouter(dateVal);
-        resultDiv.innerHTML = renderAI(aiText, dateVal);
+        // 2) Якщо немає — запитуємо Groq
+        const aiText = await askGroq(dateVal);
+        const imageUrl = generateImage(aiText);
+        resultDiv.innerHTML = renderAI(aiText, imageUrl);
     });
 
     // Автозапуск при завантаженні
