@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>📜 Мемний історик + ChatGPT</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #0b0e14;
+            color: #e4e6eb;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            max-width: 720px;
+            width: 100%;
+            background: #181e27;
+            border-radius: 32px;
+            padding: 40px 32px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+            border: 1px solid #2f3a47;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .subtitle {
+            color: #8a9aa8;
+            font-size: 15px;
+            margin-bottom: 28px;
+            border-left: 3px solid #ffb347;
+            padding-left: 14px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .input-group input {
+            flex: 2;
+            min-width: 180px;
+            padding: 14px 18px;
+            border-radius: 60px;
+            border: 1px solid #2f3a47;
+            background: #0f151d;
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .input-group input:focus {
+            border-color: #ffb347;
+            background: #131b25;
+        }
+
+        .input-group button {
+            flex: 1;
+            min-width: 110px;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 60px;
+            background: #ffb347;
+            color: #0b0e14;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 4px 14px rgba(255, 179, 71, 0.25);
+        }
+
+        .input-group button:hover {
+            transform: scale(1.02);
+            background: #ffa726;
+            box-shadow: 0 6px 20px rgba(255, 179, 71, 0.35);
+        }
+
+        #result {
+            background: #0f151d;
+            border-radius: 24px;
+            padding: 24px 22px;
+            border: 1px solid #25303c;
+            min-height: 140px;
+            transition: 0.3s;
+        }
+
+        .mem-year {
+            color: #ffb347;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .mem-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .mem-desc {
+            color: #b6c4d0;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .mem-tag {
+            display: inline-block;
+            background: #25303c;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+            color: #b6c4d0;
+            margin-right: 6px;
+        }
+
+        .empty-state {
+            color: #8a9aa8;
+            text-align: center;
+            padding: 18px 0;
+            font-style: italic;
+        }
+
+        .loading {
+            color: #ffb347;
+            text-align: center;
+            padding: 18px 0;
+            font-weight: 600;
+        }
+
+        .ai-badge {
+            display: inline-block;
+            background: #1a2a3a;
+            padding: 2px 12px;
+            border-radius: 30px;
+            font-size: 12px;
+            color: #6a9bc7;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>📜 Мемний історик</h1>
+    <div class="subtitle">
+        🤖 Шукаємо в архіві, а якщо немає — питаємо ChatGPT
+    </div>
+
+    <div class="input-group">
+        <input type="date" id="dateInput" value="2015-06-15" />
+        <button id="searchBtn">🔍 Показати</button>
+    </div>
+
+    <div id="result">
+        <div class="empty-state">Оберіть дату та натисніть «Показати»</div>
+    </div>
+</div>
+
+<script>
+    // ================================================================
+    // 1. БАЗА МЕМІВ
+    // ================================================================
+    const memeDB = {
+        "2010-01-15": { title: "🤣 Лолкот / Rage Comics", desc: "Пік популярності коміксів із товстими пікселями.", tags: ["Rage Comics", "Trollface"] },
+        "2010-07-27": { title: "🦙 «Вас вітає Чупакабра»", desc: "Вірусне відео з альпакою, яка «розмовляє» українською.", tags: ["Чупакабра", "Українські меми"] },
+        "2011-04-20": { title: "🐱 Nyan Cat", desc: "Котик-попсай з райдужним слідом.", tags: ["Nyan Cat", "GIF"] },
+        "2011-11-11": { title: "💀 «11.11.11 – кінець світу?»", desc: "Інтернет-паніка через «магічну» дату.", tags: ["Кінець світу", "Паніка"] },
+        "2012-09-12": { title: "😎 Gangnam Style", desc: "PSY випускає кліп, який за добу збирає 10M+ переглядів.", tags: ["Gangnam Style", "PSY"] },
+        "2013-02-18": { title: "🐸 Pepe the Frog", desc: "Перша поява сумного жаби Pepe в інтернет-мемах.", tags: ["Pepe", "Frog"] },
+        "2013-12-25": { title: "🎄 «Відео від Діда Мороза»", desc: "Фейковий лист від Santa Claus, який зламував акаунти.", tags: ["Різдво", "Віруси"] },
+        "2014-08-10": { title: "🕺 Ice Bucket Challenge", desc: "Акція з обливанням холодною водою дійшла до піку.", tags: ["Ice Bucket", "Благодійність"] },
+        "2015-02-26": { title: "👗 «Сукня» – золото чи синє?", desc: "Фото сукні, яке розкололо інтернет на два табори.", tags: ["Сукня", "Оптика"] },
+        "2015-06-15": { title: "🐧 «Пінгвін із Меме»", desc: "Відомий пінгвін-невдаха, який падає з криги.", tags: ["Пінгвін", "Невдача"] },
+        "2016-10-20": { title: "🤖 Harambe", desc: "Горіла із зоопарку Цинциннаті стала символом інтернет-скорботи.", tags: ["Harambe", "Зоопарк"] },
+        "2017-04-02": { title: "🐶 Doge", desc: "Сіба-іну з багатокольоровим текстом стала найвпізнаванішою собакою.", tags: ["Doge", "Собаки"] },
+        "2018-07-10": { title: "🧠 «Великий мозок»", desc: "Мем із збільшеним мозком, який показує рівні мислення.", tags: ["Мозок", "Іронія"] },
+        "2019-11-19": { title: "🐱 «Що ти маєш на увазі?»", desc: "Фото кота, який сидить за столом, стало мемом про підозру.", tags: ["Коти", "Підозра"] },
+        "2020-03-17": { title: "🧻 Туалетний папір – паніка року", desc: "Початок карантину. Люди скуповували папір так, ніби це золото.", tags: ["COVID-19", "Паніка"] },
+        "2020-09-05": { title: "🐭 «Як справи?» – хом'як-діллер", desc: "Підлітковий мем із хом'яком, який «продає наркотики».", tags: ["Хом'як", "Підлітки"] },
+        "2021-01-29": { title: "🪑 «Гучне падіння»", desc: "Відео, де дідусь падає з крісла на весіллі.", tags: ["Падіння", "Весілля"] },
+        "2022-05-19": { title: "🐊 «Зуби дракона»", desc: "Вірусна іграшка-конструктор, яку називали «зубами дракона».", tags: ["Іграшки", "Дракони"] },
+        "2023-07-28": { title: "🤖 ШІ-генерації мемів", desc: "Нейромережі почали створювати меми самостійно.", tags: ["ШІ", "Нейромережі"] },
+        "2024-12-04": { title: "🎅 Санта-бот", desc: "Бот, який генерував листи від Санти, випадково написав «ти був поганим».", tags: ["Різдво", "ШІ-жарти"] },
+        "2025-01-10": { title: "📱 «Фотка з дрона»", desc: "Знімок будинку, який захопили краби. Інтернет вирішив, що це «початок ери ракоподібних».", tags: ["Краби", "Дрони"] }
+    };
+
+    // ================================================================
+    // 2. ВАШ КЛЮЧ OPENAI (скопійовано з вашого повідомлення)
+    // ================================================================
+    const OPENAI_API_KEY = "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";
+    const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
+
+    async function askChatGPT(dateStr) {
+        const prompt = `
+Ти — Мемний історик. Напиши коротку цікаву історію (до 3 речень) про те, який мем або інтернет-тренд був популярним саме ${dateStr}.
+Якщо не знаєш точно — вигадай реалістичний жарт у стилі «забуті меми».
+Додай емодзі та 2 теги через кому (#).
+Відповідай тільки текстом, без зайвих слів.
+`;
+
+        try {
+            const response = await fetch(OPENAI_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${OPENAI_API_KEY}`
+                },
+                body: JSON.stringify({
+                    model: "gpt-3.5-turbo",
+                    messages: [
+                        { role: "system", content: "Ти експерт з інтернет-мемів та історії трендів." },
+                        { role: "user", content: prompt }
+                    ],
+                    max_tokens: 200,
+                    temperature: 0.8
+                })
+            });
+
+            const data = await response.json();
+            console.log("ChatGPT відповідь:", data);
+
+            const text = data?.choices?.[0]?.message?.content || "❌ Не вдалося згенерувати мем.";
+            return text;
+        } catch (error) {
+            console.error("Помилка OpenAI:", error);
+            return "⚠️ ШІ тимчасово недоступний. Спробуй іншу дату.";
+        }
+    }
+
+    // ================================================================
+    // 3. ЛОГІКА ВІДОБРАЖЕННЯ
+    // ================================================================
+    const resultDiv = document.getElementById("result");
+
+    function renderMeme(meme) {
+        return `
+            <div class="mem-year">📅 ${meme.date || "Невідома дата"}</div>
+            <div class="mem-title">${meme.title}</div>
+            <div class="mem-desc">${meme.desc}</div>
+            <div>
+                ${meme.tags.map(t => `<span class="mem-tag">#${t}</span>`).join("")}
+            </div>
+        `;
+    }
+
+    function renderAI(text) {
+        return `
+            <div class="ai-badge">🤖 Згенеровано ChatGPT</div>
+            <div style="font-size:16px; line-height:1.6; color:#b6c4d0;">${text}</div>
+        `;
+    }
+
+    document.getElementById("searchBtn").addEventListener("click", async () => {
+        const dateInput = document.getElementById("dateInput");
+        const dateVal = dateInput.value;
+        if (!dateVal) {
+            resultDiv.innerHTML = `<div class="empty-state">❌ Оберіть дату</div>`;
+            return;
+        }
+
+        resultDiv.innerHTML = `<div class="loading">⏳ Шукаємо меми за ${dateVal}...</div>`;
+
+        // Шукаємо в базі
+        const meme = memeDB[dateVal];
+        if (meme) {
+            resultDiv.innerHTML = renderMeme({ ...meme, date: dateVal });
+            return;
+        }
+
+        // Якщо немає — ChatGPT
+        const aiText = await askChatGPT(dateVal);
+        resultDiv.innerHTML = renderAI(aiText);
+    });
+
+    // Автозапуск
+    window.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("searchBtn").click();
+    });
+</script>
+
+</body>
+</html>
