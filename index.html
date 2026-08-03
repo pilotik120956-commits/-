@@ -174,7 +174,7 @@
 <div class="card">
     <h1>📜 Мемний історик</h1>
     <div class="subtitle">
-        🆓 Працює без реєстрації — вбудовані безкоштовні ключі
+        🤖 Працює з OpenRouter (безкоштовно) + база мемів
     </div>
 
     <div class="input-group">
@@ -216,95 +216,52 @@
     };
 
     // ================================================================
-    // 2. СПИСОК БЕЗКОШТОВНИХ API (роблять "з коробки")
-    //    Перший працюючий буде використано
+    // 2. ВАШ КЛЮЧ OPENROUTER
     // ================================================================
-    const FREE_APIS = [
-        // 1. OpenRouter (безкоштовні моделі)
-        {
-            name: "OpenRouter",
-            url: "https://openrouter.ai/api/v1/chat/completions",
-            key: "sk-or-v1-4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5",
-            model: "openrouter/free",
-            buildBody: (date) => ({
-                model: "openrouter/free",
-                messages: [
-                    { role: "system", content: "Ти експерт з інтернет-мемів." },
-                    { role: "user", content: `Напиши коротку історію про мем, популярний ${date}. Додай емодзі та 2 теги.` }
-                ],
-                max_tokens: 200
-            }),
-            parseResponse: (data) => data?.choices?.[0]?.message?.content
-        },
-        // 2. Groq (безкоштовний тариф)
-        {
-            name: "Groq",
-            url: "https://api.groq.com/openai/v1/chat/completions",
-            key: "gsk_4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5",
-            model: "mixtral-8x7b-32768",
-            buildBody: (date) => ({
-                model: "mixtral-8x7b-32768",
-                messages: [
-                    { role: "system", content: "Ти експерт з інтернет-мемів." },
-                    { role: "user", content: `Напиши коротку історію про мем, популярний ${date}. Додай емодзі та 2 теги.` }
-                ],
-                max_tokens: 200
-            }),
-            parseResponse: (data) => data?.choices?.[0]?.message?.content
-        },
-        // 3. Gemini (безкоштовний)
-        {
-            name: "Gemini",
-            url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyDx6Zq2f5XlG6q8Zt9wX5nF3kL7vR2mN8",
-            key: null, // ключ вже в URL
-            model: "gemini-2.0-flash",
-            buildBody: (date) => ({
-                contents: [{ parts: [{ text: `Напиши коротку історію про мем, популярний ${date}. Додай емодзі та 2 теги.` }] }]
-            }),
-            parseResponse: (data) => data?.candidates?.[0]?.content?.parts?.[0]?.text
+    const OPENROUTER_KEY = "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";
+    const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
+
+    async function askOpenRouter(dateStr) {
+        const prompt = `
+Ти — Мемний історик. Напиши коротку цікаву історію (до 3 речень) про те, який мем або інтернет-тренд був популярним саме ${dateStr}.
+Якщо не знаєш точно — вигадай реалістичний жарт у стилі «забуті меми».
+Додай емодзі та 2 теги через кому (#).
+Відповідай тільки текстом, без зайвих слів.
+`;
+
+        try {
+            const response = await fetch(OPENROUTER_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${OPENROUTER_KEY}`,
+                    "HTTP-Referer": window.location.href,
+                    "X-Title": "Мемний історик"
+                },
+                body: JSON.stringify({
+                    model: "openrouter/free",
+                    messages: [
+                        { role: "system", content: "Ти експерт з інтернет-мемів та історії трендів." },
+                        { role: "user", content: prompt }
+                    ],
+                    max_tokens: 200,
+                    temperature: 0.8
+                })
+            });
+
+            const data = await response.json();
+            console.log("OpenRouter відповідь:", data);
+
+            const text = data?.choices?.[0]?.message?.content || "❌ Не вдалося згенерувати мем.";
+            return text;
+        } catch (error) {
+            console.error("Помилка OpenRouter:", error);
+            return "⚠️ ШІ тимчасово недоступний. Спробуй іншу дату.";
         }
-    ];
-
-    // ================================================================
-    // 3. ФУНКЦІЯ ЗАПИТУ ДО ШІ (перебирає API, доки не спрацює)
-    // ================================================================
-    async function askAI(dateStr) {
-        for (let i = 0; i < FREE_APIS.length; i++) {
-            const api = FREE_APIS[i];
-            try {
-                console.log(`🔄 Спроба ${i+1}: ${api.name}`);
-
-                const options = {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(api.buildBody(dateStr))
-                };
-
-                // Додаємо ключ, якщо він є
-                if (api.key) {
-                    options.headers["Authorization"] = `Bearer ${api.key}`;
-                }
-
-                const response = await fetch(api.url, options);
-                const data = await response.json();
-
-                const text = api.parseResponse(data);
-                if (text) {
-                    console.log(`✅ ${api.name} спрацював!`);
-                    return text;
-                }
-            } catch (error) {
-                console.log(`❌ ${api.name} не спрацював:`, error.message);
-            }
-        }
-
-        return "❌ Всі ШІ тимчасово недоступні. Спробуйте пізніше.";
     }
 
     // ================================================================
-    // 4. ЛОГІКА ВІДОБРАЖЕННЯ
+    // 3. ЛОГІКА ВІДОБРАЖЕННЯ
     // ================================================================
     const resultDiv = document.getElementById("result");
 
@@ -319,9 +276,9 @@
         `;
     }
 
-    function renderAI(text, apiName) {
+    function renderAI(text) {
         return `
-            <div class="ai-badge">🤖 Згенеровано ${apiName || "ШІ"} (безкоштовно)</div>
+            <div class="ai-badge">🤖 Згенеровано OpenRouter (безкоштовно)</div>
             <div style="font-size:16px; line-height:1.6; color:#b6c4d0;">${text}</div>
         `;
     }
@@ -343,19 +300,9 @@
             return;
         }
 
-        // 2) Якщо немає — пробуємо ШІ (перебирає всі безкоштовні API)
-        const aiText = await askAI(dateVal);
-        
-        // Дізнаємося, який API спрацював
-        let apiName = "ШІ";
-        for (const api of FREE_APIS) {
-            if (aiText.includes("згенерувати") || aiText.includes("популярний")) {
-                apiName = api.name;
-                break;
-            }
-        }
-        
-        resultDiv.innerHTML = renderAI(aiText, apiName);
+        // 2) Якщо немає — запитуємо OpenRouter
+        const aiText = await askOpenRouter(dateVal);
+        resultDiv.innerHTML = renderAI(aiText);
     });
 
     // Автозапуск при завантаженні
