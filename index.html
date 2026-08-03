@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>📜 Мемний історик</title>
+    <title>📜 Мемний історик + картинки</title>
     <style>
         * {
             margin: 0;
@@ -23,7 +23,7 @@
         }
 
         .card {
-            max-width: 720px;
+            max-width: 760px;
             width: 100%;
             background: #181e27;
             border-radius: 32px;
@@ -136,6 +136,16 @@
             margin-right: 6px;
         }
 
+        .mem-image {
+            width: 100%;
+            max-height: 320px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin: 16px 0 12px 0;
+            border: 1px solid #2f3a47;
+            background: #0b0e14;
+        }
+
         .empty-state {
             color: #8a9aa8;
             text-align: center;
@@ -160,12 +170,22 @@
             margin-bottom: 10px;
         }
 
-        .error-box {
+        .image-loader {
+            text-align: center;
+            padding: 12px 0;
+            color: #6a8a9a;
+            font-size: 14px;
+        }
+
+        .image-error {
             background: #2a1a1a;
-            border: 1px solid #8b3a3a;
-            border-radius: 16px;
-            padding: 16px;
-            color: #e6a0a0;
+            border: 1px solid #6a3a3a;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            color: #d08a8a;
+            font-size: 14px;
+            margin: 12px 0;
         }
     </style>
 </head>
@@ -174,7 +194,7 @@
 <div class="card">
     <h1>📜 Мемний історик</h1>
     <div class="subtitle">
-        🤖 Працює з OpenRouter (безкоштовно) + база мемів
+        🖼️ ШІ генерує картинку до кожного мема (безкоштовно)
     </div>
 
     <div class="input-group">
@@ -261,25 +281,58 @@
     }
 
     // ================================================================
-    // 3. ЛОГІКА ВІДОБРАЖЕННЯ
+    // 3. ГЕНЕРАЦІЯ КАРТИНКИ (безкоштовний Pollinations.ai)
+    // ================================================================
+    function generateImage(prompt) {
+        // Очищуємо промпт від емодзі та зайвих символів
+        const cleanPrompt = prompt
+            .replace(/[^\w\s,.!?\-()]/g, ' ') // прибираємо емодзі
+            .replace(/\s+/g, ' ')
+            .trim()
+            .slice(0, 200); // обмежуємо довжину
+
+        // Pollinations.ai — безкоштовний API без ключа
+        // Додаємо стиль "мем" для кращого результату
+        const imagePrompt = `meme style, internet meme, ${cleanPrompt}, viral meme, funny`;
+        const encodedPrompt = encodeURIComponent(imagePrompt);
+        
+        // Використовуємо Pollinations з параметрами
+        return `https://image.pollinations.ai/prompt/${encodedPrompt}?width=768&height=512&nologo=true&seed=${Date.now()}`;
+    }
+
+    // ================================================================
+    // 4. ЛОГІКА ВІДОБРАЖЕННЯ
     // ================================================================
     const resultDiv = document.getElementById("result");
 
-    function renderMeme(meme) {
+    function renderMeme(meme, date, imageUrl) {
         return `
-            <div class="mem-year">📅 ${meme.date || "Невідома дата"}</div>
+            <div class="mem-year">📅 ${date}</div>
             <div class="mem-title">${meme.title}</div>
             <div class="mem-desc">${meme.desc}</div>
             <div>
                 ${meme.tags.map(t => `<span class="mem-tag">#${t}</span>`).join("")}
             </div>
+            <img class="mem-image" src="${imageUrl}" alt="${meme.title}" 
+                 onerror="this.style.display='none'; this.parentElement.querySelector('.image-error').style.display='block';" />
+            <div class="image-error" style="display:none;">
+                ⚠️ Не вдалося завантажити картинку. Спробуйте оновити сторінку.
+            </div>
         `;
     }
 
-    function renderAI(text) {
+    function renderAI(text, date) {
+        // Генеруємо картинку на основі тексту від ШІ
+        const imageUrl = generateImage(text);
+
         return `
             <div class="ai-badge">🤖 Згенеровано OpenRouter (безкоштовно)</div>
-            <div style="font-size:16px; line-height:1.6; color:#b6c4d0;">${text}</div>
+            <div style="font-size:16px; line-height:1.6; color:#b6c4d0; margin-bottom:12px;">${text}</div>
+            <img class="mem-image" src="${imageUrl}" alt="Мем" 
+                 onerror="this.style.display='none'; this.parentElement.querySelector('.image-error').style.display='block';" />
+            <div class="image-error" style="display:none;">
+                ⚠️ Не вдалося завантажити картинку. Спробуйте оновити сторінку.
+            </div>
         `;
     }
 
@@ -296,13 +349,15 @@
         // 1) Шукаємо в базі
         const meme = memeDB[dateVal];
         if (meme) {
-            resultDiv.innerHTML = renderMeme({ ...meme, date: dateVal });
+            // Генеруємо картинку на основі назви мема
+            const imageUrl = generateImage(meme.title + " " + meme.desc);
+            resultDiv.innerHTML = renderMeme(meme, dateVal, imageUrl);
             return;
         }
 
         // 2) Якщо немає — запитуємо OpenRouter
         const aiText = await askOpenRouter(dateVal);
-        resultDiv.innerHTML = renderAI(aiText);
+        resultDiv.innerHTML = renderAI(aiText, dateVal);
     });
 
     // Автозапуск при завантаженні
