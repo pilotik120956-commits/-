@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Брахітерапія в Португалії — без розрізу, високоточне лікування</title>
+    <meta name="description" content="Брахітерапія в Португалії без розрізу. Сучасні методики HDR/LDR, 4D-планування, МРТ-контроль. Консультація Наталії." />
+    <link rel="canonical" href="https://bronxiterapia.vercel.app/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
@@ -29,6 +31,37 @@
             border-radius: 2.5rem;
             box-shadow: 0 30px 60px -20px rgba(2, 45, 65, 0.18);
             padding: 2.5rem 2.8rem 3.2rem;
+        }
+
+        .language-switcher {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .language-switcher button {
+            background: #eef5f9;
+            border: 2px solid transparent;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: #1f4057;
+            transition: 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .language-switcher button:hover {
+            background: #d5e7f2;
+        }
+
+        .language-switcher button.active {
+            background: #1a8a8a;
+            color: white;
+            border-color: #1a8a8a;
         }
 
         .hero {
@@ -288,6 +321,14 @@
             text-decoration: underline;
         }
 
+        .lang-uk, .lang-pt, .lang-ptbr, .lang-en, .lang-de {
+            display: none;
+        }
+
+        .lang-uk.active, .lang-pt.active, .lang-ptbr.active, .lang-en.active, .lang-de.active {
+            display: block;
+        }
+
         @media (max-width: 640px) {
             .container {
                 padding: 1.5rem;
@@ -314,181 +355,826 @@
             .procedure-step {
                 padding: 1.2rem 1.2rem;
             }
+            .language-switcher {
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
 
-        <!-- HERO -->
-        <div class="hero">
-            <div class="hero-badge">⚕️ мінімально інвазивна онкологія</div>
-            <h1>Брахітерапія в Португалії</h1>
-            <p class="subhead">
-                <span class="highlight">Без розрізу</span> · високоточне опромінення · 
-                збереження якості життя
+        <!-- Мовний перемикач -->
+        <div class="language-switcher">
+            <button class="active" data-lang="uk">🇺🇦 Українська</button>
+            <button data-lang="pt">🇵🇹 Português (PT)</button>
+            <button data-lang="ptbr">🇧🇷 Português (BR)</button>
+            <button data-lang="en">🇬🇧 English</button>
+            <button data-lang="de">🇩🇪 Deutsch</button>
+        </div>
+        <!-- ===================== УКРАЇНСЬКА ===================== -->
+<div class="lang-uk active" id="lang-uk">
+
+    <div class="hero">
+        <div class="hero-badge">⚕️ мінімально інвазивна онкологія</div>
+        <h1>Брахітерапія в Португалії</h1>
+        <p class="subhead">
+            <span class="highlight">Без розрізу</span> · високоточне опромінення · 
+            збереження якості життя
+        </p>
+        <div class="tech-tag">🧬 сучасні методики: HDR · LDR · 4D-планування · МРТ-контроль</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🧬 Що таке брахітерапія?</div>
+        <p style="color: #1f4a60; font-size: 1.02rem; margin-bottom: 0.8rem;">
+            <strong>Брахітерапія</strong> — це метод променевої терапії, при якому радіоактивне джерело 
+            розміщується <strong>безпосередньо всередині пухлини або поруч із нею</strong>. 
+            Це дозволяє доставити високу дозу випромінювання точно в ціль, практично не зачіпаючи 
+            здорові тканини.
+        </p>
+        <p style="color: #1f4a60; font-size: 1.02rem;">
+            У Португалії цей метод широко застосовується в приватних та державних клініках 
+            для лікування раку простати, гінекологічних пухлин, раку молочної залози, 
+            шкіри та інших локалізацій.
+        </p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📋 Як проводиться брахітерапія? <span class="pill">покроково</span></div>
+
+        <div class="procedure-step">
+            <div class="step-num">КРОК 1</div>
+            <h3>Передпроцедурне обстеження та планування</h3>
+            <p>
+                Пацієнт проходить комплексне обстеження: <strong>МРТ, КТ або ПЕТ/КТ</strong> 
+                для точного визначення розмірів, форми та розташування пухлини. 
+                На основі цих даних радіоонколог та медичний фізик створюють 
+                <strong>індивідуальний 3D-план</strong> опромінення — розраховують дозу, 
+                глибину проникнення та точне положення джерела.
             </p>
-            <div class="tech-tag">🧬 сучасні методики: HDR · LDR · 4D-планування · МРТ-контроль</div>
         </div>
 
-        <!-- Що таке брахітерапія -->
-        <div class="section">
-            <div class="section-title">
-                🧬 Що таке брахітерапія?
-            </div>
-            <p style="color: #1f4a60; font-size: 1.02rem; margin-bottom: 0.8rem;">
-                <strong>Брахітерапія</strong> — це метод променевої терапії, при якому радіоактивне джерело 
-                розміщується <strong>безпосередньо всередині пухлини або поруч із нею</strong>. 
-                Це дозволяє доставити високу дозу випромінювання точно в ціль, практично не зачіпаючи 
-                здорові тканини.
+        <div class="procedure-step">
+            <div class="step-num">КРОК 2</div>
+            <h3>Встановлення аплікаторів (провідників)</h3>
+            <p>
+                Під місцевою або загальною анестезією лікар вводить <strong>тонкі голки або катетери</strong> 
+                через шкіру без жодного хірургічного розрізу. Кількість аплікаторів залежить від 
+                розміру пухлини. Процес контролюється за допомогою УЗД або МРТ у реальному часі, 
+                що гарантує ідеальну точність.
             </p>
-            <p style="color: #1f4a60; font-size: 1.02rem;">
-                У Португалії цей метод широко застосовується в приватних та державних клініках 
-                для лікування раку простати, гінекологічних пухлин, раку молочної залози, 
-                шкіри та інших локалізацій.
-            </p>
-        </div>
-
-        <!-- Як проводиться процедура -->
-        <div class="section">
-            <div class="section-title">
-                📋 Як проводиться брахітерапія? <span class="pill">покроково</span>
-            </div>
-
-            <div class="procedure-step">
-                <div class="step-num">КРОК 1</div>
-                <h3>Передпроцедурне обстеження та планування</h3>
-                <p>
-                    Пацієнт проходить комплексне обстеження: <strong>МРТ, КТ або ПЕТ/КТ</strong> 
-                    для точного визначення розмірів, форми та розташування пухлини. 
-                    На основі цих даних радіоонколог та медичний фізик створюють 
-                    <strong>індивідуальний 3D-план</strong> опромінення — розраховують дозу, 
-                    глибину проникнення та точне положення джерела.
-                </p>
-            </div>
-
-            <div class="procedure-step">
-                <div class="step-num">КРОК 2</div>
-                <h3>Встановлення аплікаторів (провідників)</h3>
-                <p>
-                    Під місцевою або загальною анестезією лікар вводить <strong>тонкі голки або катетери</strong> 
-                    через шкіру без жодного хірургічного розрізу. Кількість аплікаторів залежить від 
-                    розміру пухлини. Процес контролюється за допомогою УЗД або МРТ у реальному часі, 
-                    що гарантує ідеальну точність.
-                </p>
-                <ul>
-                    <li>При раку простати — голки вводяться через промежину.</li>
-                    <li>При гінекологічних пухлинах — через піхву.</li>
-                    <li>При пухлинах молочної залози — через катетери в зону пухлини.</li>
-                </ul>
-            </div>
-
-            <div class="procedure-step">
-                <div class="step-num">КРОК 3</div>
-                <h3>Візуалізація та фінальне планування</h3>
-                <p>
-                    Після встановлення аплікаторів проводиться <strong>контрольне КТ або МРТ</strong> 
-                    з уже вставленими провідниками. Це дозволяє скоригувати план опромінення 
-                    з урахуванням реального положення аплікаторів і анатомічних особливостей 
-                    пацієнта. Медичний фізик перевіряє всі параметри та затверджує фінальний план 
-                    лікування.
-                </p>
-            </div>
-
-            <div class="procedure-step">
-                <div class="step-num">КРОК 4</div>
-                <h3>Сеанс опромінення</h3>
-                <p>
-                    Аплікатори під'єднуються до спеціального апарата — <strong>автоматичного 
-                    післязарядного пристрою (afterloader)</strong>. За допомогою комп'ютерного 
-                    керування апарат автоматично подає радіоактивне джерело (частіше всього 
-                    <strong>Іридій-192</strong>) у кожен аплікатор згідно з розрахованим планом.
-                </p>
-                <ul>
-                    <li><strong>HDR-брахітерапія</strong> (високодозна) — сеанс триває 5–15 хвилин.</li>
-                    <li><strong>LDR-брахітерапія</strong> (низькодозна) — джерело залишається в організмі на кілька днів (імплантація насінин).</li>
-                </ul>
-                <p style="margin-top: 0.3rem;">
-                    Весь процес контролюється онкологом та медичним фізиком із сусідньої кімнати 
-                    через захисне скло. Пацієнт не відчуває болю чи дискомфорту під час опромінення.
-                </p>
-            </div>
-
-            <div class="procedure-step">
-                <div class="step-num">КРОК 5</div>
-                <h3>Завершення та відновлення</h3>
-                <p>
-                    Після завершення сеансу радіоактивне джерело автоматично повертається 
-                    в захисний контейнер. Аплікатори видаляються — <strong>в організмі не залишається 
-                    жодних радіоактивних речовин</strong>. Пацієнт може повернутися до звичних занять 
-                    вже через 1–3 дні. Для більшості типів пухлин достатньо <strong>1–3 сеансів</strong> 
-                    брахітерапії, що значно скорочує загальний час лікування.
-                </p>
-            </div>
-        </div>
-
-        <!-- Технічні переваги -->
-        <div class="section">
-            <div class="section-title">
-                ✨ Чому брахітерапія в Португалії — це сучасно та безпечно
-            </div>
-            <div class="tech-details">
-                <span class="tech-item">Відсутність хірургічних розрізів</span>
-                <span class="tech-item">Точність до 1–2 мм</span>
-                <span class="tech-item">Збереження здорових органів (сечовий міхур, пряма кишка)</span>
-                <span class="tech-item">Мінімальний ризик ускладнень (нетримання &lt;1%)</span>
-                <span class="tech-item">Короткий період відновлення (1–3 дні)</span>
-                <span class="tech-item">МРТ/КТ-контроль на всіх етапах</span>
-                <span class="tech-item">Використання Іридію-192 — найсучаснішого ізотопу</span>
-                <span class="tech-item">4D-планування з урахуванням дихання пацієнта</span>
-            </div>
-        </div>
-
-        <!-- Нова техніка -->
-        <div class="section">
-            <div class="section-title">
-                🧪 Професійна нова техніка
-            </div>
-            <p style="color: #1f4a60; margin-bottom: 0.8rem;">
-                У португальських клініках використовують найновіші системи планування та доставки 
-                променевої терапії:
-            </p>
-            <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 0.8rem 1.6rem; background: #f6faff; padding: 1.2rem 1.8rem; border-radius: 1.6rem;">
-                <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>HDR (високодозна)</strong> — сеанс 5–15 хв, амбулаторно</li>
-                <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>LDR (низькодозна)</strong> — постійна імплантація насінин I-125</li>
-                <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>4D-планування</strong> — з урахуванням дихання та рухів органів</li>
-                <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>МРТ-контроль</strong> — позиціонування в реальному часі</li>
-                <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>TrueBeam / Elekta</strong> — найточніші лінійні прискорювачі</li>
+            <ul>
+                <li>При раку простати — голки вводяться через промежину.</li>
+                <li>При гінекологічних пухлинах — через піхву.</li>
+                <li>При пухлинах молочної залози — через катетери в зону пухлини.</li>
             </ul>
-            <div class="quote-box" style="margin-top: 1.2rem;">
-                <p>
-                    “Брахітерапія дозволяє доставити лікувальну дозу радіації безпосередньо в пухлину, 
-                    оминаючи здорові органи. Це особливо важливо при лікуванні чутливих зон — 
-                    простати, шийки матки, молочної залози.”
-                </p>
-                <div class="src">— з клінічного протоколу португальського онкоцентру</div>
-            </div>
         </div>
 
-        <!-- CTA до Наталії з готовим текстом -->
-        <div class="cta-block">
-            <div class="cta-text">
-                <h2>📩 Детальна консультація</h2>
-                <p class="cta-desc">
-                    Щоб отримати індивідуальну інформацію про клініки, вартість, протипоказання 
-                    або запис на консультацію — звертайтесь до <strong>Наталії</strong> у Telegram.
-                </p>
-                <p style="font-size: 0.95rem; color: #0b4f67; margin: 0.2rem 0 0.3rem;">
-                    Натисніть на кнопку нижче — текст повідомлення вже готовий:
-                </p>
-                <a href="https://t.me/NataliiaBrovko?text=Добрий%20день%2C%20Наталіє%21%20Я%20хочу%20звернутися%20до%20Вас%20за%20проблемою%20з%20брахітерапією.%20Будь%20ласка%2C%20допоможіть%20з%20консультацією%20щодо%20лікування%20в%20Португалії." target="_blank" class="telegram-btn">
-                    ✉️ Написати Наталії
-                </a>
-            </div>
-            <div class="cta-emoji">💬</div>
+        <div class="procedure-step">
+            <div class="step-num">КРОК 3</div>
+            <h3>Візуалізація та фінальне планування</h3>
+            <p>
+                Після встановлення аплікаторів проводиться <strong>контрольне КТ або МРТ</strong> 
+                з уже вставленими провідниками. Це дозволяє скоригувати план опромінення 
+                з урахуванням реального положення аплікаторів і анатомічних особливостей 
+                пацієнта. Медичний фізик перевіряє всі параметри та затверджує фінальний план 
+                лікування.
+            </p>
         </div>
 
-        <!-- Джерела -->
+        <div class="procedure-step">
+            <div class="step-num">КРОК 4</div>
+            <h3>Сеанс опромінення</h3>
+            <p>
+                Аплікатори під'єднуються до спеціального апарата — <strong>автоматичного 
+                післязарядного пристрою (afterloader)</strong>. За допомогою комп'ютерного 
+                керування апарат автоматично подає радіоактивне джерело (частіше всього 
+                <strong>Іридій-192</strong>) у кожен аплікатор згідно з розрахованим планом.
+            </p>
+            <ul>
+                <li><strong>HDR-брахітерапія</strong> (високодозна) — сеанс триває 5–15 хвилин.</li>
+                <li><strong>LDR-брахітерапія</strong> (низькодозна) — джерело залишається в організмі на кілька днів (імплантація насінин).</li>
+            </ul>
+            <p style="margin-top: 0.3rem;">
+                Весь процес контролюється онкологом та медичним фізиком із сусідньої кімнати 
+                через захисне скло. Пацієнт не відчуває болю чи дискомфорту під час опромінення.
+            </p>
+        </div>
+
+        <div class="procedure-step">
+            <div class="step-num">КРОК 5</div>
+            <h3>Завершення та відновлення</h3>
+            <p>
+                Після завершення сеансу радіоактивне джерело автоматично повертається 
+                в захисний контейнер. Аплікатори видаляються — <strong>в організмі не залишається 
+                жодних радіоактивних речовин</strong>. Пацієнт може повернутися до звичних занять 
+                вже через 1–3 дні. Для більшості типів пухлин достатньо <strong>1–3 сеансів</strong> 
+                брахітерапії, що значно скорочує загальний час лікування.
+            </p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">✨ Чому брахітерапія в Португалії — це сучасно та безпечно</div>
+        <div class="tech-details">
+            <span class="tech-item">Відсутність хірургічних розрізів</span>
+            <span class="tech-item">Точність до 1–2 мм</span>
+            <span class="tech-item">Збереження здорових органів (сечовий міхур, пряма кишка)</span>
+            <span class="tech-item">Мінімальний ризик ускладнень (нетримання &lt;1%)</span>
+            <span class="tech-item">Короткий період відновлення (1–3 дні)</span>
+            <span class="tech-item">МРТ/КТ-контроль на всіх етапах</span>
+            <span class="tech-item">Використання Іридію-192 — найсучаснішого ізотопу</span>
+            <span class="tech-item">4D-планування з урахуванням дихання пацієнта</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🧪 Професійна нова техніка</div>
+        <p style="color: #1f4a60; margin-bottom: 0.8rem;">
+            У португальських клініках використовують найновіші системи планування та доставки 
+            променевої терапії:
+        </p>
+        <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 0.8rem 1.6rem; background: #f6faff; padding: 1.2rem 1.8rem; border-radius: 1.6rem;">
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>HDR (високодозна)</strong> — сеанс 5–15 хв, амбулаторно</li>
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>LDR (низькодозна)</strong> — постійна імплантація насінин I-125</li>
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>4D-планування</strong> — з урахуванням дихання та рухів органів</li>
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>МРТ-контроль</strong> — позиціонування в реальному часі</li>
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>TrueBeam / Elekta</strong> — найточніші лінійні прискорювачі</li>
+        </ul>
+        <div class="quote-box" style="margin-top: 1.2rem;">
+            <p>
+                “Брахітерапія дозволяє доставити лікувальну дозу радіації безпосередньо в пухлину, 
+                оминаючи здорові органи. Це особливо важливо при лікуванні чутливих зон — 
+                простати, шийки матки, молочної залози.”
+            </p>
+            <div class="src">— з клінічного протоколу португальського онкоцентру</div>
+        </div>
+    </div>
+
+    <div class="cta-block">
+        <div class="cta-text">
+            <h2>📩 Детальна консультація</h2>
+            <p class="cta-desc">
+                Щоб отримати індивідуальну інформацію про клініки, вартість, протипоказання 
+                або запис на консультацію — звертайтесь до <strong>Наталії</strong> у Telegram.
+            </p>
+            <p style="font-size: 0.95rem; color: #0b4f67; margin: 0.2rem 0 0.3rem;">
+                Натисніть на кнопку нижче — текст повідомлення вже готовий:
+            </p>
+            <a href="https://t.me/NataliiaBrovko?text=Добрий%20день%2C%20Наталіє%21%20Я%20хочу%20звернутися%20до%20Вас%20за%20проблемою%20з%20брахітерапією.%20Будь%20ласка%2C%20допоможіть%20з%20консультацією%20щодо%20лікування%20в%20Португалії." target="_blank" class="telegram-btn">
+                ✉️ Написати Наталії
+            </a>
+        </div>
+        <div class="cta-emoji">💬</div>
+    </div>
+
+</div><!-- end lang-uk -->
+        <!-- ===================== ПОРТУГАЛЬСЬКА (PT) ===================== -->
+<div class="lang-pt" id="lang-pt">
+
+    <div class="hero">
+        <div class="hero-badge">⚕️ oncologia minimamente invasiva</div>
+        <h1>Braquiterapia em Portugal</h1>
+        <p class="subhead">
+            <span class="highlight">Sem incisão</span> · irradiação de alta precisão · 
+            preservação da qualidade de vida
+        </p>
+        <div class="tech-tag">🧬 técnicas modernas: HDR · LDR · planeamento 4D · controlo por RM</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🧬 O que é a braquiterapia?</div>
+        <p style="color: #1f4a60; font-size: 1.02rem; margin-bottom: 0.8rem;">
+            A <strong>braquiterapia</strong> é um método de radioterapia em que a fonte radioativa 
+            é colocada <strong>diretamente dentro ou perto do tumor</strong>. 
+            Isto permite administrar uma dose elevada de radiação com precisão no alvo, 
+            afetando minimamente os tecidos saudáveis.
+        </p>
+        <p style="color: #1f4a60; font-size: 1.02rem;">
+            Em Portugal, este método é amplamente utilizado em clínicas privadas e públicas 
+            para o tratamento do cancro da próstata, tumores ginecológicos, cancro da mama, 
+            pele e outras localizações.
+        </p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📋 Como é realizada a braquiterapia? <span class="pill">passo a passo</span></div>
+
+        <div class="procedure-step">
+            <div class="step-num">PASSO 1</div>
+            <h3>Avaliação pré-procedimento e planeamento</h3>
+            <p>
+                O paciente realiza uma avaliação abrangente: <strong>RM, TAC ou PET/TAC</strong> 
+                para determinar com precisão o tamanho, forma e localização do tumor. 
+                Com base nestes dados, o radio-oncologista e o físico médico criam um 
+                <strong>plano 3D personalizado</strong> — calculam a dose, a profundidade 
+                de penetração e a posição exata da fonte.
+            </p>
+        </div>
+
+        <div class="procedure-step">
+            <div class="step-num">PASSO 2</div>
+            <h3>Colocação dos aplicadores</h3>
+            <p>
+                Sob anestesia local ou geral, o médico insere <strong>agulhas finas ou cateteres</strong> 
+                através da pele, sem qualquer incisão cirúrgica. O número de aplicadores 
+                depende do tamanho do tumor. O processo é controlado por ecografia ou RM 
+                em tempo real, garantindo precisão ideal.
+            </p>
+            <ul>
+                <li>No cancro da próstata — as agulhas são inseridas através do períneo.</li>
+                <li>Nos tumores ginecológicos — através da vagina.</li>
+                <li>Nos tumores da mama — através de cateteres na área tumoral.</li>
+            </ul>
+        </div>
+
+        <div class="procedure-step">
+            <div class="step-num">PASSO 3</div>
+            <h3>Imagiologia e planeamento final</h3>
+            <p>
+                Após a colocação dos aplicadores, é realizada uma <strong>TAC ou RM de controlo</strong> 
+                com os guias já inseridos. Isto permite ajustar o plano de irradiação 
+                com base na posição real dos aplicadores e nas características anatómicas 
+                do paciente. O físico médico verifica todos os parâmetros e aprova o plano 
+                final de tratamento.
+            </p>
+        </div>
+
+        <div class="procedure-step">
+            <div class="step-num">PASSO 4</div>
+            <h3>Sessão de irradiação</h3>
+            <p>
+                Os aplicadores são ligados a um equipamento especial — <strong>sistema 
+                de carga posterior automático (afterloader)</strong>. Através de controlo 
+                informático, o equipamento administra automaticamente a fonte radioativa 
+                (geralmente <strong>Irídio-192</strong>) em cada aplicador, de acordo com 
+                o plano calculado.
+            </p>
+            <ul>
+                <li><strong>Braquiterapia HDR</strong> (alta dose) — sessão de 5 a 15 minutos.</li>
+                <li><strong>Braquiterapia LDR</strong> (baixa dose) — a fonte permanece no organismo durante vários dias (implante de sementes).</li>
+            </ul>
+            <p style="margin-top: 0.3rem;">
+                Todo o processo é monitorizado pelo oncologista e pelo físico médico 
+                a partir da sala adjacente, através de vidro protetor. O paciente não sente 
+                dor ou desconforto durante a irradiação.
+            </p>
+        </div>
+
+        <div class="procedure-step">
+            <div class="step-num">PASSO 5</div>
+            <h3>Conclusão e recuperação</h3>
+            <p>
+                Após a sessão, a fonte radioativa regressa automaticamente ao contentor 
+                de proteção. Os aplicadores são removidos — <strong>não permanecem 
+                substâncias radioativas no organismo</strong>. O paciente pode retomar 
+                as suas atividades normais em 1 a 3 dias. Para a maioria dos tipos 
+                de tumor, são suficientes <strong>1 a 3 sessões</strong> de braquiterapia, 
+                reduzindo significativamente o tempo total de tratamento.
+            </p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">✨ Por que a braquiterapia em Portugal é moderna e segura</div>
+        <div class="tech-details">
+            <span class="tech-item">Sem incisões cirúrgicas</span>
+            <span class="tech-item">Precisão de 1–2 mm</span>
+            <span class="tech-item">Preservação de órgãos saudáveis (bexiga, reto)</span>
+            <span class="tech-item">Risco mínimo de complicações (incontinência &lt;1%)</span>
+            <span class="tech-item">Período de recuperação curto (1–3 dias)</span>
+            <span class="tech-item">Controlo por RM/TAC em todas as fases</span>
+            <span class="tech-item">Utilização de Irídio-192 — o isótopo mais moderno</span>
+            <span class="tech-item">Planeamento 4D com ajuste à respiração</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🧪 Nova técnica profissional</div>
+        <p style="color: #1f4a60; margin-bottom: 0.8rem;">
+            Nas clínicas portuguesas, são utilizados os sistemas mais modernos de planeamento 
+            e administração de radioterapia:
+        </p>
+        <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 0.8rem 1.6rem; background: #f6faff; padding: 1.2rem 1.8rem; border-radius: 1.6rem;">
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>HDR (alta dose)</strong> — sessão de 5–15 min, ambulatório</li>
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>LDR (baixa dose)</strong> — implante permanente de sementes I-125</li>
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>Planeamento 4D</strong> — com ajuste à respiração e movimentos</li>
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>Controlo por RM</strong> — posicionamento em tempo real</li>
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>TrueBeam / Elekta</strong> — aceleradores lineares mais precisos</li>
+        </ul>
+        <div class="quote-box" style="margin-top: 1.2rem;">
+            <p>
+                “A braquiterapia permite administrar a dose terapêutica de radiação diretamente no tumor, 
+                contornando os órgãos saudáveis. Isto é especialmente importante no tratamento 
+                de áreas sensíveis — próstata, colo do útero, mama.”
+            </p>
+            <div class="src">— protocolo clínico de centro oncológico português</div>
+        </div>
+    </div>
+
+    <div class="cta-block">
+        <div class="cta-text">
+            <h2>📩 Consulta detalhada</h2>
+            <p class="cta-desc">
+                Para obter informações personalizadas sobre clínicas, custos, contraindicações 
+                ou agendamento de consulta — contacte <strong>Natália</strong> no Telegram.
+            </p>
+            <p style="font-size: 0.95rem; color: #0b4f67; margin: 0.2rem 0 0.3rem;">
+                Clique no botão abaixo — a mensagem já está pronta:
+            </p>
+            <a href="https://t.me/NataliiaBrovko?text=Ol%C3%A1%2C%20Nat%C3%A1lia%21%20Gostaria%20de%20entrar%20em%20contato%20consigo%20sobre%20um%20problema%20relacionado%20%C3%A0%20braquiterapia.%20Por%20favor%2C%20ajude-me%20com%20uma%20consulta%20sobre%20o%20tratamento%20em%20Portugal." target="_blank" class="telegram-btn">
+                ✉️ Escrever para Natália
+            </a>
+        </div>
+        <div class="cta-emoji">💬</div>
+    </div>
+
+</div><!-- end lang-pt -->
+        <!-- ===================== БРАЗИЛЬСЬКА ПОРТУГАЛЬСЬКА (PT-BR) ===================== -->
+<div class="lang-ptbr" id="lang-ptbr">
+
+    <div class="hero">
+        <div class="hero-badge">⚕️ oncologia minimamente invasiva</div>
+        <h1>Braquiterapia em Portugal</h1>
+        <p class="subhead">
+            <span class="highlight">Sem incisão</span> · irradiação de alta precisão · 
+            preservação da qualidade de vida
+        </p>
+        <div class="tech-tag">🧬 técnicas modernas: HDR · LDR · planejamento 4D · controle por RM</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🧬 O que é a braquiterapia?</div>
+        <p style="color: #1f4a60; font-size: 1.02rem; margin-bottom: 0.8rem;">
+            A <strong>braquiterapia</strong> é um método de radioterapia em que a fonte radioativa 
+            é colocada <strong>diretamente dentro ou perto do tumor</strong>. 
+            Isso permite administrar uma dose elevada de radiação com precisão no alvo, 
+            afetando minimamente os tecidos saudáveis.
+        </p>
+        <p style="color: #1f4a60; font-size: 1.02rem;">
+            Em Portugal, este método é amplamente utilizado em clínicas privadas e públicas 
+            para o tratamento do câncer de próstata, tumores ginecológicos, câncer de mama, 
+            pele e outras localizações.
+        </p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📋 Como é realizada a braquiterapia? <span class="pill">passo a passo</span></div>
+
+        <div class="procedure-step">
+            <div class="step-num">PASSO 1</div>
+            <h3>Avaliação pré-procedimento e planejamento</h3>
+            <p>
+                O paciente realiza uma avaliação abrangente: <strong>RM, TC ou PET/TC</strong> 
+                para determinar com precisão o tamanho, forma e localização do tumor. 
+                Com base nesses dados, o radio-oncologista e o físico médico criam um 
+                <strong>plano 3D personalizado</strong> — calculam a dose, a profundidade 
+                de penetração e a posição exata da fonte.
+            </p>
+        </div>
+
+        <div class="procedure-step">
+            <div class="step-num">PASSO 2</div>
+            <h3>Colocação dos aplicadores</h3>
+            <p>
+                Sob anestesia local ou geral, o médico insere <strong>agulhas finas ou cateteres</strong> 
+                através da pele, sem qualquer incisão cirúrgica. O número de aplicadores 
+                depende do tamanho do tumor. O processo é controlado por ultrassom ou RM 
+                em tempo real, garantindo precisão ideal.
+            </p>
+            <ul>
+                <li>No câncer de próstata — as agulhas são inseridas através do períneo.</li>
+                <li>Nos tumores ginecológicos — através da vagina.</li>
+                <li>Nos tumores de mama — através de cateteres na área tumoral.</li>
+            </ul>
+        </div>
+
+        <div class="procedure-step">
+            <div class="step-num">PASSO 3</div>
+            <h3>Imagiologia e planejamento final</h3>
+            <p>
+                Após a colocação dos aplicadores, é realizada uma <strong>TC ou RM de controle</strong> 
+                com os guias já inseridos. Isso permite ajustar o plano de irradiação 
+                com base na posição real dos aplicadores e nas características anatômicas 
+                do paciente. O físico médico verifica todos os parâmetros e aprova o plano 
+                final de tratamento.
+            </p>
+        </div>
+
+        <div class="procedure-step">
+            <div class="step-num">PASSO 4</div>
+            <h3>Sessão de irradiação</h3>
+            <p>
+                Os aplicadores são ligados a um equipamento especial — <strong>sistema 
+                de carga posterior automático (afterloader)</strong>. Através de controle 
+                computadorizado, o equipamento administra automaticamente a fonte radioativa 
+                (geralmente <strong>Irídio-192</strong>) em cada aplicador, de acordo com 
+                o plano calculado.
+            </p>
+            <ul>
+                <li><strong>Braquiterapia HDR</strong> (alta dose) — sessão de 5 a 15 minutos.</li>
+                <li><strong>Braquiterapia LDR</strong> (baixa dose) — a fonte permanece no organismo durante vários dias (implante de sementes).</li>
+            </ul>
+            <p style="margin-top: 0.3rem;">
+                Todo o processo é monitorado pelo oncologista e pelo físico médico 
+                a partir da sala adjacente, através de vidro protetor. O paciente não sente 
+                dor ou desconforto durante a irradiação.
+            </p>
+        </div>
+
+        <div class="procedure-step">
+            <div class="step-num">PASSO 5</div>
+            <h3>Conclusão e recuperação</h3>
+            <p>
+                Após a sessão, a fonte radioativa retorna automaticamente ao contentor 
+                de proteção. Os aplicadores são removidos — <strong>não permanecem 
+                substâncias radioativas no organismo</strong>. O paciente pode retomar 
+                suas atividades normais em 1 a 3 dias. Para a maioria dos tipos 
+                de tumor, são suficientes <strong>1 a 3 sessões</strong> de braquiterapia, 
+                reduzindo significativamente o tempo total de tratamento.
+            </p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">✨ Por que a braquiterapia em Portugal é moderna e segura</div>
+        <div class="tech-details">
+            <span class="tech-item">Sem incisões cirúrgicas</span>
+            <span class="tech-item">Precisão de 1–2 mm</span>
+            <span class="tech-item">Preservação de órgãos saudáveis (bexiga, reto)</span>
+            <span class="tech-item">Risco mínimo de complicações (incontinência &lt;1%)</span>
+            <span class="tech-item">Período de recuperação curto (1–3 dias)</span>
+            <span class="tech-item">Controle por RM/TC em todas as fases</span>
+            <span class="tech-item">Utilização de Irídio-192 — o isótopo mais moderno</span>
+            <span class="tech-item">Planejamento 4D com ajuste à respiração</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🧪 Nova técnica profissional</div>
+        <p style="color: #1f4a60; margin-bottom: 0.8rem;">
+            Nas clínicas portuguesas, são utilizados os sistemas mais modernos de planejamento 
+            e administração de radioterapia:
+        </p>
+        <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 0.8rem 1.6rem; background: #f6faff; padding: 1.2rem 1.8rem; border-radius: 1.6rem;">
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>HDR (alta dose)</strong> — sessão de 5–15 min, ambulatorial</li>
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>LDR (baixa dose)</strong> — implante permanente de sementes I-125</li>
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>Planejamento 4D</strong> — com ajuste à respiração e movimentos</li>
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>Controle por RM</strong> — posicionamento em tempo real</li>
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>TrueBeam / Elekta</strong> — aceleradores lineares mais precisos</li>
+        </ul>
+        <div class="quote-box" style="margin-top: 1.2rem;">
+            <p>
+                “A braquiterapia permite administrar a dose terapêutica de radiação diretamente no tumor, 
+                contornando os órgãos saudáveis. Isso é especialmente importante no tratamento 
+                de áreas sensíveis — próstata, colo do útero, mama.”
+            </p>
+            <div class="src">— protocolo clínico de centro oncológico português</div>
+        </div>
+    </div>
+
+    <div class="cta-block">
+        <div class="cta-text">
+            <h2>📩 Consulta detalhada</h2>
+            <p class="cta-desc">
+                Para obter informações personalizadas sobre clínicas, custos, contraindicações 
+                ou agendamento de consulta — entre em contato com <strong>Natália</strong> no Telegram.
+            </p>
+            <p style="font-size: 0.95rem; color: #0b4f67; margin: 0.2rem 0 0.3rem;">
+                Clique no botão abaixo — a mensagem já está pronta:
+            </p>
+            <a href="https://t.me/NataliiaBrovko?text=Ol%C3%A1%2C%20Nat%C3%A1lia%21%20Gostaria%20de%20entrar%20em%20contato%20com%20voc%C3%AA%20sobre%20um%20problema%20relacionado%20%C3%A0%20braquiterapia.%20Por%20favor%2C%20me%20ajude%20com%20uma%20consulta%20sobre%20o%20tratamento%20em%20Portugal." target="_blank" class="telegram-btn">
+                ✉️ Escrever para Natália
+            </a>
+        </div>
+        <div class="cta-emoji">💬</div>
+    </div>
+
+</div><!-- end lang-ptbr -->
+        <!-- ===================== АНГЛІЙСЬКА (EN) ===================== -->
+<div class="lang-en" id="lang-en">
+
+    <div class="hero">
+        <div class="hero-badge">⚕️ minimally invasive oncology</div>
+        <h1>Brachytherapy in Portugal</h1>
+        <p class="subhead">
+            <span class="highlight">No incision</span> · high-precision irradiation · 
+            preserving quality of life
+        </p>
+        <div class="tech-tag">🧬 modern techniques: HDR · LDR · 4D planning · MRI guidance</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🧬 What is brachytherapy?</div>
+        <p style="color: #1f4a60; font-size: 1.02rem; margin-bottom: 0.8rem;">
+            <strong>Brachytherapy</strong> is a radiation therapy method where the radioactive source 
+            is placed <strong>directly inside or near the tumor</strong>. 
+            This allows delivering a high radiation dose precisely to the target, 
+            minimizing impact on healthy tissues.
+        </p>
+        <p style="color: #1f4a60; font-size: 1.02rem;">
+            In Portugal, this method is widely used in private and public clinics 
+            for the treatment of prostate cancer, gynecological tumors, breast cancer, 
+            skin cancer and other localizations.
+        </p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📋 How is brachytherapy performed? <span class="pill">step by step</span></div>
+
+        <div class="procedure-step">
+            <div class="step-num">STEP 1</div>
+            <h3>Pre-procedure evaluation and planning</h3>
+            <p>
+                The patient undergoes a comprehensive evaluation: <strong>MRI, CT or PET/CT</strong> 
+                to accurately determine the size, shape and location of the tumor. 
+                Based on this data, the radiation oncologist and medical physicist create 
+                a <strong>personalized 3D plan</strong> — calculating the dose, penetration 
+                depth and exact position of the source.
+            </p>
+        </div>
+
+        <div class="procedure-step">
+            <div class="step-num">STEP 2</div>
+            <h3>Placement of applicators</h3>
+            <p>
+                Under local or general anesthesia, the doctor inserts <strong>thin needles or catheters</strong> 
+                through the skin without any surgical incision. The number of applicators 
+                depends on the tumor size. The process is guided by ultrasound or MRI 
+                in real time, ensuring ideal accuracy.
+            </p>
+            <ul>
+                <li>For prostate cancer — needles are inserted through the perineum.</li>
+                <li>For gynecological tumors — through the vagina.</li>
+                <li>For breast tumors — through catheters into the tumor area.</li>
+            </ul>
+        </div>
+
+        <div class="procedure-step">
+            <div class="step-num">STEP 3</div>
+            <h3>Imaging and final planning</h3>
+            <p>
+                After applicator placement, a <strong>control CT or MRI</strong> is performed 
+                with the guides already inserted. This allows adjusting the radiation plan 
+                based on the real position of the applicators and the patient's anatomical 
+                features. The medical physicist verifies all parameters and approves the 
+                final treatment plan.
+            </p>
+        </div>
+
+        <div class="procedure-step">
+            <div class="step-num">STEP 4</div>
+            <h3>Irradiation session</h3>
+            <p>
+                The applicators are connected to a special device — an <strong>automatic 
+                afterloading system (afterloader)</strong>. Through computer control, 
+                the device automatically delivers the radioactive source (usually 
+                <strong>Iridium-192</strong>) into each applicator according to the 
+                calculated plan.
+            </p>
+            <ul>
+                <li><strong>HDR brachytherapy</strong> (high dose rate) — session lasts 5–15 minutes.</li>
+                <li><strong>LDR brachytherapy</strong> (low dose rate) — the source remains in the body for several days (seed implantation).</li>
+            </ul>
+            <p style="margin-top: 0.3rem;">
+                The entire process is monitored by the oncologist and medical physicist 
+                from the adjacent room through protective glass. The patient does not 
+                experience pain or discomfort during irradiation.
+            </p>
+        </div>
+
+        <div class="procedure-step">
+            <div class="step-num">STEP 5</div>
+            <h3>Completion and recovery</h3>
+            <p>
+                After the session, the radioactive source automatically returns to the 
+                protective container. The applicators are removed — <strong>no radioactive 
+                substances remain in the body</strong>. The patient can return to normal 
+                activities within 1–3 days. For most tumor types, <strong>1–3 sessions</strong> 
+                of brachytherapy are sufficient, significantly reducing the total treatment time.
+            </p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">✨ Why brachytherapy in Portugal is modern and safe</div>
+        <div class="tech-details">
+            <span class="tech-item">No surgical incisions</span>
+            <span class="tech-item">Accuracy of 1–2 mm</span>
+            <span class="tech-item">Preservation of healthy organs (bladder, rectum)</span>
+            <span class="tech-item">Minimal complication risk (incontinence &lt;1%)</span>
+            <span class="tech-item">Short recovery period (1–3 days)</span>
+            <span class="tech-item">MRI/CT guidance at all stages</span>
+            <span class="tech-item">Use of Iridium-192 — the most modern isotope</span>
+            <span class="tech-item">4D planning with respiratory adjustment</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🧪 Professional new technique</div>
+        <p style="color: #1f4a60; margin-bottom: 0.8rem;">
+            Portuguese clinics use the most modern planning and delivery systems 
+            for radiation therapy:
+        </p>
+        <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 0.8rem 1.6rem; background: #f6faff; padding: 1.2rem 1.8rem; border-radius: 1.6rem;">
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>HDR (high dose rate)</strong> — 5–15 min session, outpatient</li>
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>LDR (low dose rate)</strong> — permanent I-125 seed implantation</li>
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>4D planning</strong> — with respiratory and organ motion adjustment</li>
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>MRI guidance</strong> — real-time positioning</li>
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>TrueBeam / Elekta</strong> — most precise linear accelerators</li>
+        </ul>
+        <div class="quote-box" style="margin-top: 1.2rem;">
+            <p>
+                “Brachytherapy allows delivering the therapeutic radiation dose directly to the tumor, 
+                avoiding healthy organs. This is especially important in treating sensitive areas — 
+                prostate, cervix, breast.”
+            </p>
+            <div class="src">— from the clinical protocol of a Portuguese oncology center</div>
+        </div>
+    </div>
+
+    <div class="cta-block">
+        <div class="cta-text">
+            <h2>📩 Detailed consultation</h2>
+            <p class="cta-desc">
+                To get personalized information about clinics, costs, contraindications 
+                or appointment scheduling — contact <strong>Natália</strong> on Telegram.
+            </p>
+            <p style="font-size: 0.95rem; color: #0b4f67; margin: 0.2rem 0 0.3rem;">
+                Click the button below — the message is already prepared:
+            </p>
+            <a href="https://t.me/NataliiaBrovko?text=Hello%2C%20Nat%C3%A1lia%21%20I%20would%20like%20to%20contact%20you%20regarding%20an%20issue%20with%20brachytherapy.%20Please%20help%20me%20with%20a%20consultation%20about%20treatment%20in%20Portugal." target="_blank" class="telegram-btn">
+                ✉️ Write to Natália
+            </a>
+        </div>
+        <div class="cta-emoji">💬</div>
+    </div>
+
+</div><!-- end lang-en -->
+        <!-- ===================== НІМЕЦЬКА (DE) ===================== -->
+<div class="lang-de" id="lang-de">
+
+    <div class="hero">
+        <div class="hero-badge">⚕️ minimalinvasive Onkologie</div>
+        <h1>Brachytherapie in Portugal</h1>
+        <p class="subhead">
+            <span class="highlight">Ohne Schnitt</span> · hochpräzise Bestrahlung · 
+            Erhalt der Lebensqualität
+        </p>
+        <div class="tech-tag">🧬 moderne Techniken: HDR · LDR · 4D-Planung · MRT-Kontrolle</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🧬 Was ist Brachytherapie?</div>
+        <p style="color: #1f4a60; font-size: 1.02rem; margin-bottom: 0.8rem;">
+            Die <strong>Brachytherapie</strong> ist eine Strahlentherapiemethode, bei der die 
+            radioaktive Quelle <strong>direkt in oder in der Nähe des Tumors</strong> platziert wird. 
+            Dadurch kann eine hohe Strahlendosis präzise auf das Zielgewebe abgegeben werden, 
+            während das gesunde Gewebe weitgehend geschont wird.
+        </p>
+        <p style="color: #1f4a60; font-size: 1.02rem;">
+            In Portugal wird diese Methode in privaten und öffentlichen Kliniken häufig 
+            zur Behandlung von Prostatakrebs, gynäkologischen Tumoren, Brustkrebs, 
+            Hautkrebs und anderen Lokalisationen eingesetzt.
+        </p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📋 Wie wird die Brachytherapie durchgeführt? <span class="pill">Schritt für Schritt</span></div>
+
+        <div class="procedure-step">
+            <div class="step-num">SCHRITT 1</div>
+            <h3>Voruntersuchung und Planung</h3>
+            <p>
+                Der Patient wird umfassend untersucht: <strong>MRT, CT oder PET/CT</strong> 
+                zur genauen Bestimmung von Größe, Form und Lage des Tumors. 
+                Basierend auf diesen Daten erstellen der Radioonkologe und der Medizinphysiker 
+                einen <strong>individuellen 3D-Plan</strong> — sie berechnen die Dosis, 
+                die Eindringtiefe und die genaue Position der Quelle.
+            </p>
+        </div>
+
+        <div class="procedure-step">
+            <div class="step-num">SCHRITT 2</div>
+            <h3>Platzierung der Applikatoren</h3>
+            <p>
+                Unter Lokal- oder Vollnarkose führt der Arzt <strong>dünne Nadeln oder Katheter</strong> 
+                durch die Haut ein — ohne jeden chirurgischen Schnitt. Die Anzahl der Applikatoren 
+                hängt von der Tumorgröße ab. Der Prozess wird durch Ultraschall oder MRT 
+                in Echtzeit überwacht, was eine ideale Genauigkeit gewährleistet.
+            </p>
+            <ul>
+                <li>Bei Prostatakrebs — die Nadeln werden durch den Damm eingeführt.</li>
+                <li>Bei gynäkologischen Tumoren — durch die Scheide.</li>
+                <li>Bei Brusttumoren — durch Katheter in den Tumorbereich.</li>
+            </ul>
+        </div>
+
+        <div class="procedure-step">
+            <div class="step-num">SCHRITT 3</div>
+            <h3>Bildgebung und endgültige Planung</h3>
+            <p>
+                Nach der Platzierung der Applikatoren wird ein <strong>Kontroll-CT oder MRT</strong> 
+                mit den bereits eingesetzten Führungen durchgeführt. Dies ermöglicht eine 
+                Anpassung des Bestrahlungsplans basierend auf der tatsächlichen Position 
+                der Applikatoren und den anatomischen Gegebenheiten des Patienten. 
+                Der Medizinphysiker überprüft alle Parameter und genehmigt den endgültigen 
+                Behandlungsplan.
+            </p>
+        </div>
+
+        <div class="procedure-step">
+            <div class="step-num">SCHRITT 4</div>
+            <h3>Bestrahlungssitzung</h3>
+            <p>
+                Die Applikatoren werden an ein spezielles Gerät angeschlossen — ein 
+                <strong>automatisches Afterloading-System (Afterloader)</strong>. 
+                Durch Computersteuerung gibt das Gerät automatisch die radioaktive Quelle 
+                (meistens <strong>Iridium-192</strong>) gemäß dem berechneten Plan 
+                in jeden Applikator ab.
+            </p>
+            <ul>
+                <li><strong>HDR-Brachytherapie</strong> (hohe Dosis) — Sitzung dauert 5–15 Minuten.</li>
+                <li><strong>LDR-Brachytherapie</strong> (niedrige Dosis) — die Quelle verbleibt mehrere Tage im Körper (Seed-Implantation).</li>
+            </ul>
+            <p style="margin-top: 0.3rem;">
+                Der gesamte Prozess wird vom Onkologen und Medizinphysiker aus dem 
+                angrenzenden Raum durch Schutzglas überwacht. Der Patient verspürt 
+                während der Bestrahlung keine Schmerzen oder Beschwerden.
+            </p>
+        </div>
+
+        <div class="procedure-step">
+            <div class="step-num">SCHRITT 5</div>
+            <h3>Abschluss und Erholung</h3>
+            <p>
+                Nach der Sitzung kehrt die radioaktive Quelle automatisch in den 
+                Schutzbehälter zurück. Die Applikatoren werden entfernt — 
+                <strong>es verbleiben keine radioaktiven Substanzen im Körper</strong>. 
+                Der Patient kann bereits nach 1–3 Tagen zu seinen normalen Aktivitäten 
+                zurückkehren. Für die meisten Tumorarten sind <strong>1–3 Sitzungen</strong> 
+                Brachytherapie ausreichend, was die gesamte Behandlungszeit erheblich verkürzt.
+            </p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">✨ Warum die Brachytherapie in Portugal modern und sicher ist</div>
+        <div class="tech-details">
+            <span class="tech-item">Keine chirurgischen Schnitte</span>
+            <span class="tech-item">Genauigkeit von 1–2 mm</span>
+            <span class="tech-item">Schonung gesunder Organe (Blase, Enddarm)</span>
+            <span class="tech-item">Minimales Komplikationsrisiko (Inkontinenz &lt;1%)</span>
+            <span class="tech-item">Kurze Erholungszeit (1–3 Tage)</span>
+            <span class="tech-item">MRT/CT-Kontrolle in allen Phasen</span>
+            <span class="tech-item">Verwendung von Iridium-192 — dem modernsten Isotop</span>
+            <span class="tech-item">4D-Planung mit Anpassung an die Atmung</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🧪 Professionelle neue Technik</div>
+        <p style="color: #1f4a60; margin-bottom: 0.8rem;">
+            In portugiesischen Kliniken werden die modernsten Planungs- und Verabreichungssysteme 
+            für die Strahlentherapie eingesetzt:
+        </p>
+        <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 0.8rem 1.6rem; background: #f6faff; padding: 1.2rem 1.8rem; border-radius: 1.6rem;">
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>HDR (hohe Dosis)</strong> — Sitzung 5–15 Min, ambulant</li>
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>LDR (niedrige Dosis)</strong> — permanente I-125 Seed-Implantation</li>
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>4D-Planung</strong> — mit Anpassung an Atmung und Organbewegungen</li>
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>MRT-Kontrolle</strong> — Positionierung in Echtzeit</li>
+            <li style="display: flex; align-items: center; gap: 0.4rem;">✓ <strong>TrueBeam / Elekta</strong> — präziseste Linearbeschleuniger</li>
+        </ul>
+        <div class="quote-box" style="margin-top: 1.2rem;">
+            <p>
+                “Die Brachytherapie ermöglicht es, die therapeutische Strahlendosis direkt in den Tumor 
+                zu bringen und dabei gesunde Organe zu schonen. Dies ist besonders wichtig 
+                bei der Behandlung empfindlicher Bereiche — Prostata, Gebärmutterhals, Brust.”
+            </p>
+            <div class="src">— aus dem klinischen Protokoll eines portugiesischen Onkologiezentrums</div>
+        </div>
+    </div>
+
+    <div class="cta-block">
+        <div class="cta-text">
+            <h2>📩 Detaillierte Beratung</h2>
+            <p class="cta-desc">
+                Für persönliche Informationen zu Kliniken, Kosten, Kontraindikationen 
+                oder Terminvereinbarung — kontaktieren Sie <strong>Natália</strong> auf Telegram.
+            </p>
+            <p style="font-size: 0.95rem; color: #0b4f67; margin: 0.2rem 0 0.3rem;">
+                Klicken Sie auf den Button unten — die Nachricht ist bereits vorbereitet:
+            </p>
+            <a href="https://t.me/NataliiaBrovko?text=Guten%20Tag%2C%20Nat%C3%A1lia%21%20Ich%20m%C3%B6chte%20mich%20wegen%20eines%20Problems%20mit%20der%20Brachytherapie%20an%20Sie%20wenden.%20Bitte%20helfen%20Sie%20mir%20bei%20einer%20Beratung%20zur%20Behandlung%20in%20Portugal." target="_blank" class="telegram-btn">
+                ✉️ Nachricht an Natália
+            </a>
+        </div>
+        <div class="cta-emoji">💬</div>
+    </div>
+
+</div><!-- end lang-de -->
+                <!-- ===================== ФУТЕР ===================== -->
         <div class="footer-note">
             Інформація базується на даних португальських онкологічних центрів, 
             клінічних протоколах ESTRO (Європейського товариства радіаційної онкології) 
@@ -498,5 +1184,33 @@
         </div>
 
     </div>
+
+    <!-- ===================== СКРИПТ ПЕРЕМИКАННЯ МОВ ===================== -->
+    <script>
+        document.querySelectorAll('.language-switcher button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Знімаємо активний клас з усіх кнопок
+                document.querySelectorAll('.language-switcher button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                // Додаємо активний клас натиснутій кнопці
+                this.classList.add('active');
+
+                // Ховаємо всі мовні блоки
+                document.querySelectorAll('.lang-uk, .lang-pt, .lang-ptbr, .lang-en, .lang-de').forEach(block => {
+                    block.classList.remove('active');
+                });
+
+                // Показуємо вибраний мовний блок
+                const lang = this.dataset.lang;
+                const targetBlock = document.getElementById('lang-' + lang);
+                if (targetBlock) {
+                    targetBlock.classList.add('active');
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
+        
